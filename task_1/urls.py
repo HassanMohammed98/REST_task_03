@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from flights import views
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('register/', views.UserCreateAPIView.as_view(), name="register"),
     path('login/', TokenObtainPairView.as_view(), name='login'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('flights/', views.FlightsList.as_view(), name="flights-list"),
     path('bookings/', views.BookingsList.as_view(), name="bookings-list"), 

@@ -5,8 +5,10 @@ from rest_framework.generics import (
 from datetime import datetime
 
 from .models import Flight, Booking
-from .serializers import FlightSerializer, BookingSerializer, BookingDetailsSerializer, UpdateBookingSerializer
+from .serializers import FlightSerializer, BookingSerializer, BookingDetailsSerializer, UpdateBookingSerializer, UserCreateSerializer
 
+class UserCreateAPIView(CreateAPIView):
+	serializer_class = UserCreateSerializer
 
 class BookFlight(CreateAPIView):
 	serializer_class = UpdateBookingSerializer
